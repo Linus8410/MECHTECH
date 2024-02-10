@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "157501024189",
+    "project_id": "mechtech-c5d18",
+    "storage_bucket": "mechtech-c5d18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:157501024189:android:04e7ef7216c11a3da214d4",
+        "android_client_info": {
+          "package_name": "com.example.mechtech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDmT5xOz-FML6Uxjdm4_Jil1kVA1hy6D4U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -42,12 +42,14 @@ public class Register extends AppCompatActivity {
                String password1=password.getText().toString();
                String password2=Password.getText().toString();
                String emaill=email.getText().toString();
+               Database db=new Database(getApplicationContext(),"mechtech",null,1);
                if(username1.length()==0 || emaill.length()==0 || password1.length()==0||password2.length()==0){
                    Toast.makeText( getApplicationContext(),"Please fill all details",Toast.LENGTH_SHORT).show();
                }
                else{
                    if(password1.compareTo(password2)==0){
                        if(isValid(password1)) {
+                           db.register(username1,emaill,password1);
                            Toast.makeText(getApplicationContext(), "Record Inserted", Toast.LENGTH_SHORT).show();
                            startActivity(new Intent(Register.this, Loginactivity.class));
 

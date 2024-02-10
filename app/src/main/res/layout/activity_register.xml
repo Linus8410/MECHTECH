@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:background="#050C32"
+    android:background="#01071E"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
     <LinearLayout
@@ -11,24 +11,18 @@
         android:orientation="vertical"
         android:layout_height="wrap_content">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:textColor="@color/white"
-            android:textStyle="bold"
-            android:textSize="30sp"
-            android:layout_marginTop="60dp"
-            android:text="MECHTECH"
-
-            />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/logo23"
+            android:layout_margin="50dp"
+            android:layout_marginTop="40dp"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="0dp"
             android:layout_marginBottom="25dp"
             android:gravity="center"
             android:text="Register"
