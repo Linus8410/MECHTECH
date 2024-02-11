@@ -16,7 +16,7 @@ public class Register extends AppCompatActivity {
 
     EditText username,password,email,Password;
     TextView txtregister;
-    Button btn;
+    Button btn,btn1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,7 @@ public class Register extends AppCompatActivity {
         email=findViewById(R.id.emaill);
         txtregister=findViewById(R.id.existingaccount);
         btn=findViewById(R.id.btnregister);
+        btn1=findViewById(R.id.btnmech);
 
        txtregister.setOnClickListener(new View.OnClickListener() {
            @Override
@@ -35,6 +36,25 @@ public class Register extends AppCompatActivity {
                startActivity(new Intent(Register.this, Loginactivity.class));
            }
        });
+       btn1.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+               String username1=username.getText().toString();
+               String password1=password.getText().toString();
+               String password2=Password.getText().toString();
+               String emaill=email.getText().toString();
+               Database db=new Database(getApplicationContext(),"mechtech",null,1);
+               if(username1.length()==0 || emaill.length()==0 || password1.length()==0||password2.length()==0){
+                   Toast.makeText( getApplicationContext(),"Please fill all details",Toast.LENGTH_SHORT).show();
+               }
+               Toast.makeText(getApplicationContext(), "Record Inserted", Toast.LENGTH_SHORT).show();
+               startActivity(new Intent(Register.this, Loginactivity.class));
+           }
+
+          
+
+       });
+
        btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -93,5 +113,6 @@ public class Register extends AppCompatActivity {
             return false;
         }
     }
+
 
 }
