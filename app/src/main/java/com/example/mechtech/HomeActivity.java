@@ -12,26 +12,36 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
+
 public class HomeActivity extends AppCompatActivity {
-  
+    FirebaseAuth auth;
+    FirebaseUser user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+        auth=FirebaseAuth.getInstance();
+        user= auth.getCurrentUser();
+        if(user==null){
+            Intent intent=new Intent(getApplicationContext(), Loginactivity.class);
+            startActivity(intent);
+            finish();
+        }
 
-        SharedPreferences sharedPreferences=getSharedPreferences("shared_prefs", Context.MODE_PRIVATE);
-        String username=sharedPreferences.getString("username","").toString();
-        Toast.makeText(getApplicationContext(), "Welcome"+ username, Toast.LENGTH_SHORT).show();
 
         CardView logoutt=findViewById(R.id.card6);
         logoutt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                SharedPreferences.Editor editor=sharedPreferences.edit();
-                editor.clear();
-                editor.apply();
-                startActivity(new Intent(HomeActivity.this, Loginactivity.class));
+                FirebaseAuth.getInstance().signOut();
+                Intent intent=new Intent(getApplicationContext(), Loginactivity.class);
+                startActivity(intent);
+                finish();
+
             }
         });
 

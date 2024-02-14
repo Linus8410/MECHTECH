@@ -2,26 +2,50 @@ package com.example.mechtech;
 
 import static android.opengl.ETC1.isValid;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 public class Register extends AppCompatActivity {
 
     EditText username,password,email,Password;
     TextView txtregister;
     Button btn,btn1;
+    FirebaseAuth mAuth;
+    public void onStart() {
+        super.onStart();
+        FirebaseUser currentuser=mAuth.getCurrentUser();
+        if(currentuser!=null){
+            Intent intent=new Intent(getApplicationContext(), Loginactivity.class);
+            startActivity(intent);
+            finish();
+
+        }
+
+
+    }
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        mAuth=FirebaseAuth.getInstance();
         username=findViewById(R.id.username1);
         password=findViewById(R.id.password1);
         Password=findViewById(R.id.password2);
@@ -34,27 +58,9 @@ public class Register extends AppCompatActivity {
            @Override
            public void onClick(View v) {
                startActivity(new Intent(Register.this, Loginactivity.class));
+               finish();
            }
        });
-       btn1.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-               String username1=username.getText().toString();
-               String password1=password.getText().toString();
-               String password2=Password.getText().toString();
-               String emaill=email.getText().toString();
-               Database db=new Database(getApplicationContext(),"mechtech",null,1);
-               if(username1.length()==0 || emaill.length()==0 || password1.length()==0||password2.length()==0){
-                   Toast.makeText( getApplicationContext(),"Please fill all details",Toast.LENGTH_SHORT).show();
-               }
-               Toast.makeText(getApplicationContext(), "Record Inserted", Toast.LENGTH_SHORT).show();
-               startActivity(new Intent(Register.this, Loginactivity.class));
-           }
-
-          
-
-       });
-
        btn.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View v) {
@@ -62,28 +68,89 @@ public class Register extends AppCompatActivity {
                String password1=password.getText().toString();
                String password2=Password.getText().toString();
                String emaill=email.getText().toString();
-               Database db=new Database(getApplicationContext(),"mechtech",null,1);
-               if(username1.length()==0 || emaill.length()==0 || password1.length()==0||password2.length()==0){
-                   Toast.makeText( getApplicationContext(),"Please fill all details",Toast.LENGTH_SHORT).show();
+
+               if(TextUtils.isEmpty(emaill)) {
+                   Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
+
+                   return;
                }
-               else{
-                   if(password1.compareTo(password2)==0){
-                       if(isValid(password1)) {
-                           db.register(username1,emaill,password1);
-                           Toast.makeText(getApplicationContext(), "Record Inserted", Toast.LENGTH_SHORT).show();
-                           startActivity(new Intent(Register.this, Loginactivity.class));
+               if(TextUtils.isEmpty(password1)) {
+                   Toast.makeText(Register.this, "Enter password", Toast.LENGTH_SHORT).show();
 
-                       } else{
-                               Toast.makeText(getApplicationContext(), "Password must contain atleast 8 characters,having a letter,digit and special symbol", Toast.LENGTH_SHORT).show();
+                   return;
+               }
+               mAuth.createUserWithEmailAndPassword(emaill, password1)
+                       .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                           @Override
+                           public void onComplete(@NonNull Task<AuthResult> task) {
+                               if (task.isSuccessful()) {
+                                   Intent intent=new Intent(getApplicationContext(), Loginactivity.class);
+                                   startActivity(intent);
+                                   finish();
+                                   // Sign in success, update UI with the signed-in user's information
+                                   Toast.makeText(Register.this, "Account created",
+                                           Toast.LENGTH_SHORT).show();
 
+
+                               } else {
+                                   // If sign in fails, display a message to the user.
+                                   Toast.makeText(Register.this, "Authentication failed.",
+                                           Toast.LENGTH_SHORT).show();
+
+                               }
                            }
-                   }
-                   else{
-                       Toast.makeText(getApplicationContext(),"Passwords don't match!", Toast.LENGTH_SHORT).show();
-                   }
-               }
+                       });
            }
+
+
+
        });
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String username1=username.getText().toString();
+                String password1=password.getText().toString();
+                String password2=Password.getText().toString();
+                String emaill=email.getText().toString();
+
+                if(TextUtils.isEmpty(emaill)) {
+                    Toast.makeText(Register.this, "Enter Email", Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
+                if(TextUtils.isEmpty(password1)) {
+                    Toast.makeText(Register.this, "Enter password", Toast.LENGTH_SHORT).show();
+
+                    return;
+                }
+                mAuth.createUserWithEmailAndPassword(emaill, password1)
+                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Register.this, "Account created",
+                                            Toast.LENGTH_SHORT).show();
+                                    Intent intent=new Intent(getApplicationContext(), Loginactivity.class);
+                                    startActivity(intent);
+                                    finish();
+                                    // Sign in success, update UI with the signed-in user's information
+
+
+                                } else {
+                                    // If sign in fails, display a message to the user.
+                                    Toast.makeText(Register.this, "Authentication failed.",
+                                            Toast.LENGTH_SHORT).show();
+
+                                }
+                            }
+                        });
+            }
+
+
+
+        });
+
+
 
     }
 
