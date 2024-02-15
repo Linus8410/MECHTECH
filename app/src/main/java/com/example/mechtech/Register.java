@@ -105,7 +105,7 @@ public class Register extends AppCompatActivity {
 
 
        });
-        btn.setOnClickListener(new View.OnClickListener() {
+        btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username1=username.getText().toString();
