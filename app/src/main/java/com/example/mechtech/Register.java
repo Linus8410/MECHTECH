@@ -35,9 +35,9 @@ public class Register extends AppCompatActivity {
             finish();
 
         }
-
-
     }
+
+
 
 
 

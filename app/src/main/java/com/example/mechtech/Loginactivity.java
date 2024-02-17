@@ -26,71 +26,64 @@ public class Loginactivity extends AppCompatActivity {
     TextView txtregister;
     Button btnlogin;
     FirebaseAuth mAuth;
+
+    @Override
     public void onStart() {
         super.onStart();
-        FirebaseUser currentuser=mAuth.getCurrentUser();
-        if(currentuser!=null){
-            Intent intent=new Intent(getApplicationContext(), Loginactivity.class);
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
             startActivity(intent);
             finish();
-
         }
     }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loginactivity);
+
         emailll = findViewById(R.id.username);
         edpassword = findViewById(R.id.password);
         txtregister = findViewById(R.id.register);
         btnlogin = findViewById(R.id.login);
         mAuth = FirebaseAuth.getInstance();
 
-
-
         btnlogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String username = emailll.getText().toString();
                 String password = edpassword.getText().toString();
-                if (username.length() == 0 || password.length() == 0) {
-                    Toast.makeText(getApplicationContext(), "Please fill all details", Toast.LENGTH_SHORT).show();
-                }
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(Loginactivity.this, "Enter Email", Toast.LENGTH_SHORT).show();
 
+                if (TextUtils.isEmpty(username) || TextUtils.isEmpty(password)) {
+                    Toast.makeText(Loginactivity.this, "Please fill all details", Toast.LENGTH_SHORT).show();
                     return;
                 }
-                if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(Loginactivity.this, "Enter password", Toast.LENGTH_SHORT).show();
 
-                    return;
-                }
-                mAuth.createUserWithEmailAndPassword(username, password)
+                mAuth.signInWithEmailAndPassword(username, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
+                                    Intent intent = new Intent(getApplicationContext(), HomeActivity.class);
+                                    startActivity(intent);
+                                    finish();
                                     // Sign in success, update UI with the signed-in user's information
                                     Toast.makeText(getApplicationContext(), "Login Success", Toast.LENGTH_SHORT).show();
                                 } else {
                                     // If sign in fails, display a message to the user.
-
-                                    Toast.makeText(Loginactivity.this, "Authentication failed.",
-                                            Toast.LENGTH_SHORT).show();
-
+                                    Toast.makeText(Loginactivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
             }
-
-
         });
 
         txtregister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(Loginactivity.this, Register.class));
+                finish();
             }
         });
     }
