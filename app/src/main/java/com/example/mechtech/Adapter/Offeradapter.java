@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+
 import com.bumptech.glide.Glide;
 import com.example.mechtech.R;
 import com.example.mechtech.model.Offermodel;
@@ -36,13 +37,13 @@ public class Offeradapter extends RecyclerView.Adapter<Offeradapter.viewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull Offeradapter.viewHolder holder, int position) {
-        final Offermodel offermodel=offermodelList.get(position);
+        final Offermodel offermodel=OffermodelList.get(position);
         holder.offerprice.setText(offermodel.getOfferconstraint());
         holder.offerconstraint.setText(offermodel.getOfferconstraint());
-        Glide.with(ctx).load(offermodel.getOfferImage().into(holder.offerImage));
+        Glide.with(ctx).load(offermodel.getOfferImage()).into(holder.offerImage);
 
     }
-0
+
     @Override
     public int getItemCount() {
         return OffermodelList.size();
