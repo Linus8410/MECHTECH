@@ -1,3 +1,47 @@
 <resources>
     <string name="app_name">MechTech</string>
+
+
+    <string name="headlights"> Illuminate the road ahead with our high-quality headlights,
+        designed for optimal visibility and safety. Explore a range of styles,
+        from sleek LED headlights to powerful halogen options!</string>
+    <string name="bumper"> Crafted for durability and style, our bumpers are designed to withstand the
+        demands of the road while enhancing the overall look of your ride.</string>
+
+
+    <string name="breaklights"> Engineered for durability and performance,
+        our brake lights provide reliable stopping power while adding a
+        touch of elegance to your ride</string>
+
+
+    <string name="wipers">Ensure clear visibility in any weather with our top-quality windshield wipers.
+        From heavy rain to snow and sleet, our wipers are designed to keep your
+        windshield streak-free and crystal clear.
+    </string>
+
+
+    <string name="tyre">Revitalize your ride with our premium selection of tires.
+        From all-season versatility to high-performance options,
+        our extensive range caters to every driving need.</string>
+
+
+    <string name="rims"> Crafted with precision and durability in mind,
+        our rims not only enhance the visual appeal of your
+        ride but also provide optimal performance.</string>
+
+
+    <string name="plugs">Engineered for compatibility and durability, our car plugs are a must-have for modern drivers
+   </string>
+    <string name="shocks">Transform your driving experience with our premium shock absorbers.
+        Engineered for performance and comfort.
+    </string>
+    <string name="turbo">Unleash the power of performance with our premium turbochargers.
+        Elevate your driving experience by adding a turbocharger to your engine,
+        boosting horsepower and torque for exhilarating acceleration.</string>
+
+    <string name="sidemirror"> Replace damaged or outdated mirrors with our high-quality options
+        that not only provide a clear view of your surroundings
+        but also add a touch of elegance to your ride.</string>
+
+
 </resources>

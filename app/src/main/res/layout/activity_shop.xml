@@ -1,87 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Shop">
-    <LinearLayout
+    tools:context=".MainActivity">
+
+   <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    <ImageView
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:id="@+id/menu"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="15dp"
-        android:src="@drawable/menu"
+        android:layout_height="match_parent"
+        android:id="@+id/recyclerView"/>
 
-        />
-    <com.google.android.material.textview.MaterialTextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:gravity="center"
-        android:drawableRight="@drawable/dropdown"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginStart="16dp"
-        android:textSize="16sp"
-        android:textStyle="bold"
-        android:text="Headlight,Bumper,Shocks,Breakpads"
-        />
-    </LinearLayout>
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardCornerRadius="7dp"
-                android:elevation="3dp"
-                android:background="@color/white"
-                android:layout_marginTop="55dp"
-                android:layout_marginHorizontal="15dp">
-                <EditText
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingVertical="8dp"
-                    android:layout_gravity="center"
-                    android:textSize="17sp"
-                    android:drawablePadding="16dp"
-                    android:drawableLeft="@drawable/search"
-                    android:textStyle="bold"
-                    android:layout_marginTop="15dp"
-                    android:textColorHint="@color/black"
-                    android:hint="What do you want to buy today?"/>
-            </androidx.cardview.widget.CardView>
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:id="@+id/recycler1"/>
-
-
-
-
-            
-            
-            
-            
-        </LinearLayout>
-        
-    </ScrollView>
-        
-
-
-
-
-
-
-
-
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>
