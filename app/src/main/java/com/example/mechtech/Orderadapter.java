@@ -1,6 +1,7 @@
 package com.example.mechtech;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,5 +75,19 @@ public class Orderadapter extends RecyclerView.Adapter<Orderadapter.ViewHolder> 
         @Override
         public void onClick(View v) {
 
+            // lets get the position of the view in list and then work on it
+
+            int position = getAdapterPosition();
+
+            if (position == 0) {
+                Intent intent = new Intent(context, InfoActivity.class);
+                context.startActivity(intent);
+            }
+
+            if (position == 1) {
+                Intent intent2 = new Intent(context,Bumper.class);
+                context.startActivity(intent2);
+            }
         }
-    }}
+    }
+}

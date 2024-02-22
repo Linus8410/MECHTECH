@@ -27,7 +27,7 @@
                 android:layout_height="250dp"
                 android:layout_centerHorizontal="true"
                 android:id="@+id/imageViewInfo"
-                android:src="@drawable/bumper"/>
+                android:src="@drawable/headlightt"/>
 
             <TextView
                 android:id="@+id/drinkNameinInfo"
@@ -44,19 +44,20 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/coffeePrice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="$150 a pair"
-                android:textColor="@color/black"
-                android:id="@+id/coffeePrice"
+                android:layout_below="@+id/imageViewInfo"
                 android:layout_alignRight="@+id/drinkNameinInfo"
                 android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
                 android:layout_marginTop="20dp"
-                android:layout_marginRight="60dp"
-                android:textStyle="bold"
+                android:layout_marginEnd="35dp"
+                android:layout_marginRight="35dp"
+                android:text="ksh15000 a pair"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:layout_below="@+id/imageViewInfo"
-                android:layout_alignParentRight="true" />
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -84,6 +85,7 @@
             <ImageButton
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+
                 android:layout_marginLeft="130dp"
                 android:id="@+id/addquantity"
                 android:backgroundTint="#FFFFFF"/>
@@ -104,6 +106,7 @@
             <ImageButton
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:background="@drawable/subtract"
                 android:layout_marginLeft="214dp"
                 android:id="@+id/subquantity"
                 android:backgroundTint="#FFFFFF"/>

@@ -17,6 +17,12 @@
         android:theme="@style/Theme.MechTech"
         tools:targetApi="31">
         <activity
+            android:name=".Headlight"
+            android:exported="false" />
+        <activity
+            android:name=".Bumper"
+            android:exported="false" />
+        <activity
             android:name=".model.LatteActivity"
             android:exported="false" />
         <activity
