@@ -33,6 +33,7 @@
             <ListView
                 android:layout_width="match_parent"
                 android:paddingTop="40dp"
+                android:background="#FFFFFF"
                 android:layout_height="match_parent"
                 android:id="@+id/list"/>
 
